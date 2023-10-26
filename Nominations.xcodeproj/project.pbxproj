@@ -25,6 +25,10 @@
 		1BA8D9E42AE29ACD008FBB3F /* CubeFoundationSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1BA8D9E32AE29ACD008FBB3F /* CubeFoundationSwiftUI */; };
 		1BA8D9E62AE29AF7008FBB3F /* FontName+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8D9E52AE29AF7008FBB3F /* FontName+Names.swift */; };
 		1BA8D9E82AE29B3B008FBB3F /* TextStyle+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8D9E72AE29B3B008FBB3F /* TextStyle+Styles.swift */; };
+		AA78B7912AEAA67100B5AC43 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7902AEAA67100B5AC43 /* HomeView.swift */; };
+		AA78B7942AEAA6CA00B5AC43 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7932AEAA6CA00B5AC43 /* EmptyView.swift */; };
+		AA78B7962AEAAFD400B5AC43 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7952AEAAFD400B5AC43 /* PrimaryButton.swift */; };
+		AA78B7992AEAB53700B5AC43 /* SecondaryButtton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7982AEAB53700B5AC43 /* SecondaryButtton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		1BA8D9DD2AE2962B008FBB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1BA8D9E52AE29AF7008FBB3F /* FontName+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FontName+Names.swift"; sourceTree = "<group>"; };
 		1BA8D9E72AE29B3B008FBB3F /* TextStyle+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextStyle+Styles.swift"; sourceTree = "<group>"; };
+		AA78B7902AEAA67100B5AC43 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		AA78B7932AEAA6CA00B5AC43 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		AA78B7952AEAAFD400B5AC43 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		AA78B7982AEAB53700B5AC43 /* SecondaryButtton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,8 @@
 			children = (
 				1B8FA0822AE2B69A009E185D /* HeaderBarView.swift */,
 				1B8FA0852AE2BB92009E185D /* NominationsHeaderView.swift */,
+				AA78B7982AEAB53700B5AC43 /* SecondaryButtton.swift */,
+				AA78B7952AEAAFD400B5AC43 /* PrimaryButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -92,6 +102,7 @@
 				1BA8D9DD2AE2962B008FBB3F /* Info.plist */,
 				1BA8D9B82AE290D7008FBB3F /* NominationsApp.swift */,
 				1BA8D9BA2AE290D7008FBB3F /* ContentView.swift */,
+				AA78B78F2AEAA66500B5AC43 /* View */,
 				1B8FA0842AE2B69E009E185D /* Components */,
 				1BA8D9DE2AE29652008FBB3F /* Resources */,
 				1BA8D9BE2AE290DA008FBB3F /* Preview Content */,
@@ -147,6 +158,15 @@
 				1BA8D9CE2AE29617008FBB3F /* Fonts */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		AA78B78F2AEAA66500B5AC43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA78B7902AEAA67100B5AC43 /* HomeView.swift */,
+				AA78B7932AEAA6CA00B5AC43 /* EmptyView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,10 +255,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BA8D9BB2AE290D7008FBB3F /* ContentView.swift in Sources */,
+				AA78B7942AEAA6CA00B5AC43 /* EmptyView.swift in Sources */,
+				AA78B7992AEAB53700B5AC43 /* SecondaryButtton.swift in Sources */,
+				AA78B7962AEAAFD400B5AC43 /* PrimaryButton.swift in Sources */,
 				1B8FA0862AE2BB92009E185D /* NominationsHeaderView.swift in Sources */,
 				1B8FA0832AE2B69A009E185D /* HeaderBarView.swift in Sources */,
 				1BA8D9B92AE290D7008FBB3F /* NominationsApp.swift in Sources */,
 				1BA8D9E82AE29B3B008FBB3F /* TextStyle+Styles.swift in Sources */,
+				AA78B7912AEAA67100B5AC43 /* HomeView.swift in Sources */,
 				1BA8D9E62AE29AF7008FBB3F /* FontName+Names.swift in Sources */,
 				1BA8D9CD2AE294B3008FBB3F /* FigmaShadow+Shadows.swift in Sources */,
 			);

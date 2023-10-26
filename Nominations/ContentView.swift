@@ -10,13 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(spacing: 0) {
-            HeaderBarView()
-            ScrollView {
-                NominationsHeaderView()
-            }
-        }
-        .background(.cubeLightGrey)
+        HomeView()
     }
 }
 
