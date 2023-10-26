@@ -26,9 +26,13 @@
 		1BA8D9E62AE29AF7008FBB3F /* FontName+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8D9E52AE29AF7008FBB3F /* FontName+Names.swift */; };
 		1BA8D9E82AE29B3B008FBB3F /* TextStyle+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8D9E72AE29B3B008FBB3F /* TextStyle+Styles.swift */; };
 		AA78B7912AEAA67100B5AC43 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7902AEAA67100B5AC43 /* HomeView.swift */; };
-		AA78B7942AEAA6CA00B5AC43 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7932AEAA6CA00B5AC43 /* EmptyView.swift */; };
+		AA78B7942AEAA6CA00B5AC43 /* ListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7932AEAA6CA00B5AC43 /* ListEmptyView.swift */; };
 		AA78B7962AEAAFD400B5AC43 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7952AEAAFD400B5AC43 /* PrimaryButton.swift */; };
 		AA78B7992AEAB53700B5AC43 /* SecondaryButtton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7982AEAB53700B5AC43 /* SecondaryButtton.swift */; };
+		AA78B79B2AEABE6D00B5AC43 /* NominationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B79A2AEABE6D00B5AC43 /* NominationFormView.swift */; };
+		AA78B7A32AEAE61100B5AC43 /* LeavePageAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7A22AEAE61100B5AC43 /* LeavePageAlertView.swift */; };
+		AA78B7A52AEAE90A00B5AC43 /* SubmittedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7A42AEAE90A00B5AC43 /* SubmittedView.swift */; };
+		AA78B7A72AEAF76F00B5AC43 /* CustomShadow+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7A62AEAF76F00B5AC43 /* CustomShadow+View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,9 +55,13 @@
 		1BA8D9E52AE29AF7008FBB3F /* FontName+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FontName+Names.swift"; sourceTree = "<group>"; };
 		1BA8D9E72AE29B3B008FBB3F /* TextStyle+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextStyle+Styles.swift"; sourceTree = "<group>"; };
 		AA78B7902AEAA67100B5AC43 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		AA78B7932AEAA6CA00B5AC43 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		AA78B7932AEAA6CA00B5AC43 /* ListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEmptyView.swift; sourceTree = "<group>"; };
 		AA78B7952AEAAFD400B5AC43 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		AA78B7982AEAB53700B5AC43 /* SecondaryButtton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtton.swift; sourceTree = "<group>"; };
+		AA78B79A2AEABE6D00B5AC43 /* NominationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationFormView.swift; sourceTree = "<group>"; };
+		AA78B7A22AEAE61100B5AC43 /* LeavePageAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeavePageAlertView.swift; sourceTree = "<group>"; };
+		AA78B7A42AEAE90A00B5AC43 /* SubmittedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmittedView.swift; sourceTree = "<group>"; };
+		AA78B7A62AEAF76F00B5AC43 /* CustomShadow+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomShadow+View.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				1BA8D9BC2AE290DA008FBB3F /* Assets.xcassets */,
+				AA78B7A62AEAF76F00B5AC43 /* CustomShadow+View.swift */,
 				1BA8D9CC2AE294B3008FBB3F /* FigmaShadow+Shadows.swift */,
 				1BA8D9E52AE29AF7008FBB3F /* FontName+Names.swift */,
 				1BA8D9E72AE29B3B008FBB3F /* TextStyle+Styles.swift */,
@@ -164,7 +173,10 @@
 			isa = PBXGroup;
 			children = (
 				AA78B7902AEAA67100B5AC43 /* HomeView.swift */,
-				AA78B7932AEAA6CA00B5AC43 /* EmptyView.swift */,
+				AA78B7932AEAA6CA00B5AC43 /* ListEmptyView.swift */,
+				AA78B79A2AEABE6D00B5AC43 /* NominationFormView.swift */,
+				AA78B7A22AEAE61100B5AC43 /* LeavePageAlertView.swift */,
+				AA78B7A42AEAE90A00B5AC43 /* SubmittedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -254,12 +266,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA78B7A72AEAF76F00B5AC43 /* CustomShadow+View.swift in Sources */,
 				1BA8D9BB2AE290D7008FBB3F /* ContentView.swift in Sources */,
-				AA78B7942AEAA6CA00B5AC43 /* EmptyView.swift in Sources */,
+				AA78B7942AEAA6CA00B5AC43 /* ListEmptyView.swift in Sources */,
 				AA78B7992AEAB53700B5AC43 /* SecondaryButtton.swift in Sources */,
 				AA78B7962AEAAFD400B5AC43 /* PrimaryButton.swift in Sources */,
+				AA78B7A32AEAE61100B5AC43 /* LeavePageAlertView.swift in Sources */,
 				1B8FA0862AE2BB92009E185D /* NominationsHeaderView.swift in Sources */,
+				AA78B7A52AEAE90A00B5AC43 /* SubmittedView.swift in Sources */,
 				1B8FA0832AE2B69A009E185D /* HeaderBarView.swift in Sources */,
+				AA78B79B2AEABE6D00B5AC43 /* NominationFormView.swift in Sources */,
 				1BA8D9B92AE290D7008FBB3F /* NominationsApp.swift in Sources */,
 				1BA8D9E82AE29B3B008FBB3F /* TextStyle+Styles.swift in Sources */,
 				AA78B7912AEAA67100B5AC43 /* HomeView.swift in Sources */,

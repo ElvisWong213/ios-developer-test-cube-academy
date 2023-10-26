@@ -17,7 +17,7 @@ struct HomeView: View {
             HeaderBarView()
             if list.isEmpty {
                 NominationsHeaderView()
-                EmptyView()
+                ListEmptyView()
             } else {
                 List {
                     NominationsHeaderView()
@@ -42,6 +42,7 @@ struct HomeView: View {
             PrimaryButton(text: "create new nomination") {
                 list.append("Hi")
             }
+            .customShadow()
         }
         .background(.cubeLightGrey)
     }
