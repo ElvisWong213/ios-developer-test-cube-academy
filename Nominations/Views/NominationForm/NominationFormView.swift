@@ -66,6 +66,9 @@ struct NominationFormView: View {
                             .frame(height: 200)
                             .border(Color.black, width: 1)
                             .font(TextStyle.body.font)
+                            .onChange(of: reasoningText) {
+                                reasoningText = String(reasoningText.prefix(280))
+                            }
                         Divider()
                             .padding(.vertical)
                         HStack {
