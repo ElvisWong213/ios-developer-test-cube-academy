@@ -10,13 +10,13 @@ import Foundation
 
 @MainActor
 class HomeViewModel: ObservableObject {
-    @Published var nominationlist: [Nomination] = []
+    @Published var nominationlist: [NominationResponse] = []
     @Published var nomineeList: [Nominee] = []
-    @Published var createNewNomination: Bool = false
+    @Published var path: [ViewEnum] = []
     
     func getAllNominations() {
         Task {
-            guard let response = try? await Network.makeRequest(request: .getAllNominations) as AllNominations else {
+            guard let response = try? await Network.makeRequest(request: .getAllNominations) as AllNominationsResponse else {
                 return
             }
             nominationlist = response.data

@@ -1,5 +1,5 @@
 //
-//  AllNominees.swift
+//  Nominee.swift
 //  Nominations
 //
 //  Created by Elvis on 27/10/2023.

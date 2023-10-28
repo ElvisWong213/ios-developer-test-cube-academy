@@ -11,7 +11,7 @@ import CubeFoundationSwiftUI
 
 struct FeelingPickerItem: View {
     let feeling: Feeling
-    @Binding var selected: FeelingKey?
+    @Binding var selected: FeelingKey
     let size = UIScreen.main.bounds.width / 13
     
     var body: some View {
@@ -50,5 +50,5 @@ struct FeelingPickerItem: View {
 }
 
 #Preview {
-    FeelingPickerItem(feeling: Feeling.list[0], selected: .constant(nil))
+    FeelingPickerItem(feeling: Feeling.list[0], selected: .constant(.Null))
 }

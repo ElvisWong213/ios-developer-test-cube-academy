@@ -10,8 +10,10 @@ import SwiftUI
 import CubeFoundationSwiftUI
 
 struct SubmittedView: View {
+    @EnvironmentObject var homeVM: HomeViewModel
+    
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             HeaderBarView(title: "Nomination Submitted")
             Image(.group)
                 .resizable()
@@ -29,10 +31,10 @@ struct SubmittedView: View {
             Spacer()
             VStack(spacing: 0) {
                 PrimaryButton(text: "Create new nomination") {
-                    
+                    homeVM.path.removeLast()
                 }
                 SecondaryButtton(text: "Back to home") {
-                    
+                    homeVM.path = []
                 }
             }
             .customShadow()
@@ -42,4 +44,5 @@ struct SubmittedView: View {
 
 #Preview {
     SubmittedView()
+        .environmentObject(HomeViewModel())
 }

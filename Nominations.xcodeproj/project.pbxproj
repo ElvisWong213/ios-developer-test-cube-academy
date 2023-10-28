@@ -26,7 +26,7 @@
 		1BA8D9E62AE29AF7008FBB3F /* FontName+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8D9E52AE29AF7008FBB3F /* FontName+Names.swift */; };
 		1BA8D9E82AE29B3B008FBB3F /* TextStyle+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8D9E72AE29B3B008FBB3F /* TextStyle+Styles.swift */; };
 		AA151FD82AEC0EF10085EDE7 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FD72AEC0EF10085EDE7 /* Network.swift */; };
-		AA151FDA2AEC0F400085EDE7 /* AllNominees.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FD92AEC0F400085EDE7 /* AllNominees.swift */; };
+		AA151FDA2AEC0F400085EDE7 /* Nominee.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FD92AEC0F400085EDE7 /* Nominee.swift */; };
 		AA151FDC2AEC5B520085EDE7 /* AuthToken.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA151FDB2AEC5B520085EDE7 /* AuthToken.plist */; };
 		AA151FE42AEC5F480085EDE7 /* NominationsTestsNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FE32AEC5F480085EDE7 /* NominationsTestsNetwork.swift */; };
 		AA151FEB2AEC64DA0085EDE7 /* NominationsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FEA2AEC64DA0085EDE7 /* NominationsListItem.swift */; };
@@ -34,6 +34,8 @@
 		AA151FF02AEC8D260085EDE7 /* FeelingPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FEF2AEC8D260085EDE7 /* FeelingPicker.swift */; };
 		AA151FF32AEC93510085EDE7 /* Feeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FF22AEC93510085EDE7 /* Feeling.swift */; };
 		AA151FF72AEC97A10085EDE7 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FF62AEC97A10085EDE7 /* HomeViewModel.swift */; };
+		AA151FFD2AED42D50085EDE7 /* NominationFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FFC2AED42D50085EDE7 /* NominationFormViewModel.swift */; };
+		AA151FFF2AED43CE0085EDE7 /* ViewEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FFE2AED43CE0085EDE7 /* ViewEnum.swift */; };
 		AA78B7912AEAA67100B5AC43 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7902AEAA67100B5AC43 /* HomeView.swift */; };
 		AA78B7942AEAA6CA00B5AC43 /* ListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7932AEAA6CA00B5AC43 /* ListEmptyView.swift */; };
 		AA78B7962AEAAFD400B5AC43 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7952AEAAFD400B5AC43 /* PrimaryButton.swift */; };
@@ -42,7 +44,7 @@
 		AA78B7A32AEAE61100B5AC43 /* LeavePageAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7A22AEAE61100B5AC43 /* LeavePageAlertView.swift */; };
 		AA78B7A52AEAE90A00B5AC43 /* SubmittedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7A42AEAE90A00B5AC43 /* SubmittedView.swift */; };
 		AA78B7A72AEAF76F00B5AC43 /* CustomShadow+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7A62AEAF76F00B5AC43 /* CustomShadow+View.swift */; };
-		AA78B7AD2AEB01F600B5AC43 /* AllNominations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7AC2AEB01F600B5AC43 /* AllNominations.swift */; };
+		AA78B7AD2AEB01F600B5AC43 /* Nomination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7AC2AEB01F600B5AC43 /* Nomination.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +77,7 @@
 		1BA8D9E52AE29AF7008FBB3F /* FontName+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FontName+Names.swift"; sourceTree = "<group>"; };
 		1BA8D9E72AE29B3B008FBB3F /* TextStyle+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextStyle+Styles.swift"; sourceTree = "<group>"; };
 		AA151FD72AEC0EF10085EDE7 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		AA151FD92AEC0F400085EDE7 /* AllNominees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNominees.swift; sourceTree = "<group>"; };
+		AA151FD92AEC0F400085EDE7 /* Nominee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nominee.swift; sourceTree = "<group>"; };
 		AA151FDB2AEC5B520085EDE7 /* AuthToken.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AuthToken.plist; sourceTree = "<group>"; };
 		AA151FE12AEC5F480085EDE7 /* NominationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NominationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA151FE32AEC5F480085EDE7 /* NominationsTestsNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationsTestsNetwork.swift; sourceTree = "<group>"; };
@@ -84,6 +86,8 @@
 		AA151FEF2AEC8D260085EDE7 /* FeelingPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingPicker.swift; sourceTree = "<group>"; };
 		AA151FF22AEC93510085EDE7 /* Feeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeling.swift; sourceTree = "<group>"; };
 		AA151FF62AEC97A10085EDE7 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		AA151FFC2AED42D50085EDE7 /* NominationFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationFormViewModel.swift; sourceTree = "<group>"; };
+		AA151FFE2AED43CE0085EDE7 /* ViewEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEnum.swift; sourceTree = "<group>"; };
 		AA78B7902AEAA67100B5AC43 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AA78B7932AEAA6CA00B5AC43 /* ListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEmptyView.swift; sourceTree = "<group>"; };
 		AA78B7952AEAAFD400B5AC43 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
@@ -92,7 +96,7 @@
 		AA78B7A22AEAE61100B5AC43 /* LeavePageAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeavePageAlertView.swift; sourceTree = "<group>"; };
 		AA78B7A42AEAE90A00B5AC43 /* SubmittedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmittedView.swift; sourceTree = "<group>"; };
 		AA78B7A62AEAF76F00B5AC43 /* CustomShadow+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomShadow+View.swift"; sourceTree = "<group>"; };
-		AA78B7AC2AEB01F600B5AC43 /* AllNominations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNominations.swift; sourceTree = "<group>"; };
+		AA78B7AC2AEB01F600B5AC43 /* Nomination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nomination.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,8 +235,8 @@
 		AA151FF12AEC933D0085EDE7 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				AA78B7AC2AEB01F600B5AC43 /* AllNominations.swift */,
-				AA151FD92AEC0F400085EDE7 /* AllNominees.swift */,
+				AA78B7AC2AEB01F600B5AC43 /* Nomination.swift */,
+				AA151FD92AEC0F400085EDE7 /* Nominee.swift */,
 				AA151FD72AEC0EF10085EDE7 /* Network.swift */,
 			);
 			path = Network;
@@ -264,6 +268,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		AA151FFB2AED42B80085EDE7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AA151FFC2AED42D50085EDE7 /* NominationFormViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		AA78B78F2AEAA66500B5AC43 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +299,7 @@
 		AA78B7A92AEB012A00B5AC43 /* NominationForm */ = {
 			isa = PBXGroup;
 			children = (
+				AA151FFB2AED42B80085EDE7 /* ViewModels */,
 				AA151FFA2AECA6B20085EDE7 /* Components */,
 				AA78B79A2AEABE6D00B5AC43 /* NominationFormView.swift */,
 			);
@@ -306,6 +319,7 @@
 			children = (
 				AA151FF12AEC933D0085EDE7 /* Network */,
 				AA151FF22AEC93510085EDE7 /* Feeling.swift */,
+				AA151FFE2AED43CE0085EDE7 /* ViewEnum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -429,7 +443,7 @@
 				AA78B7A72AEAF76F00B5AC43 /* CustomShadow+View.swift in Sources */,
 				1BA8D9BB2AE290D7008FBB3F /* ContentView.swift in Sources */,
 				AA78B7942AEAA6CA00B5AC43 /* ListEmptyView.swift in Sources */,
-				AA78B7AD2AEB01F600B5AC43 /* AllNominations.swift in Sources */,
+				AA78B7AD2AEB01F600B5AC43 /* Nomination.swift in Sources */,
 				AA78B7992AEAB53700B5AC43 /* SecondaryButtton.swift in Sources */,
 				AA78B7962AEAAFD400B5AC43 /* PrimaryButton.swift in Sources */,
 				AA151FF72AEC97A10085EDE7 /* HomeViewModel.swift in Sources */,
@@ -441,13 +455,15 @@
 				AA78B79B2AEABE6D00B5AC43 /* NominationFormView.swift in Sources */,
 				AA151FF32AEC93510085EDE7 /* Feeling.swift in Sources */,
 				1BA8D9B92AE290D7008FBB3F /* NominationsApp.swift in Sources */,
+				AA151FFF2AED43CE0085EDE7 /* ViewEnum.swift in Sources */,
 				AA151FEB2AEC64DA0085EDE7 /* NominationsListItem.swift in Sources */,
 				1BA8D9E82AE29B3B008FBB3F /* TextStyle+Styles.swift in Sources */,
 				AA78B7912AEAA67100B5AC43 /* HomeView.swift in Sources */,
 				AA151FF02AEC8D260085EDE7 /* FeelingPicker.swift in Sources */,
 				1BA8D9E62AE29AF7008FBB3F /* FontName+Names.swift in Sources */,
+				AA151FFD2AED42D50085EDE7 /* NominationFormViewModel.swift in Sources */,
 				AA151FED2AEC86C50085EDE7 /* FeelingPickerItem.swift in Sources */,
-				AA151FDA2AEC0F400085EDE7 /* AllNominees.swift in Sources */,
+				AA151FDA2AEC0F400085EDE7 /* Nominee.swift in Sources */,
 				1BA8D9CD2AE294B3008FBB3F /* FigmaShadow+Shadows.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

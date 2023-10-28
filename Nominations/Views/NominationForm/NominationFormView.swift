@@ -11,10 +11,7 @@ import CubeFoundationSwiftUI
 
 struct NominationFormView: View {
     @EnvironmentObject var homeVM: HomeViewModel
-    @State var showAlert: Bool = false
-    @State var selectedNominee: String = ""
-    @State var reasoningText: String = ""
-    @State var selectedFeeling: FeelingKey?
+    @StateObject var vm = NominationFormViewModel()
     
     var body: some View {
         ZStack {
@@ -38,7 +35,7 @@ struct NominationFormView: View {
                         }
                         .font(TextStyle.boldHeadlineSmallest.font)
                         .bold()
-                        Picker(selection: $selectedNominee, label: Text("Club's name")) {
+                        Picker(selection: $vm.nominationRequest.nomineeId, label: Text("Club's name")) {
                             Text("-- Pick a name --")
                                 .tag("")
                             ForEach(homeVM.nomineeList, id: \.nomineeId) { nominee in
@@ -62,12 +59,12 @@ struct NominationFormView: View {
                         }
                         .font(TextStyle.boldHeadlineSmallest.font)
                         .bold()
-                        TextEditor(text: $reasoningText)
+                        TextEditor(text: $vm.nominationRequest.reason)
                             .frame(height: 200)
                             .border(Color.black, width: 1)
                             .font(TextStyle.body.font)
-                            .onChange(of: reasoningText) {
-                                reasoningText = String(reasoningText.prefix(280))
+                            .onChange(of: vm.nominationRequest.reason) {
+                                vm.nominationRequest.reason = String(vm.nominationRequest.reason.prefix(280))
                             }
                         Divider()
                             .padding(.vertical)
@@ -83,52 +80,48 @@ struct NominationFormView: View {
                         .bold()
                         Text("As you know, out the nominees chosen, we spin a wheel to pick the cube of the month. What's your opinion on this method?")
                             .font(TextStyle.body.font)
-                        FeelingPicker(selected: $selectedFeeling)
+                        FeelingPicker(selected: $vm.nominationRequest.process)
                     }
                     .padding()
                 }
                 HStack(spacing: 0) {
                     SecondaryButtton(text: "Back") {
-                        if isAPartOffFieldsFilledOut() {
-                            showAlert.toggle()
+                        if vm.nominationRequest.isAPartFilledOut {
+                            vm.showAlert.toggle()
                         } else {
-                            homeVM.createNewNomination = false
+                            homeVM.path = []
                         }
                     }
                     PrimaryButton(text: "Submit nomination") {
-                        print("Submit")
+                        Task {
+                            guard let response = await vm.submitForm() else {
+                                // TODO: Add alert
+                                return
+                            }
+                            homeVM.path.append(.Submitted)
+                            homeVM.nominationlist.append(response.data)
+                        }
                     }
-                    .disabled(!isAllFieldsFilledOut())
+                    .disabled(!vm.nominationRequest.isAllFilledOut)
                     .frame(width: UIScreen.main.bounds.width / 3 * 2)
                 }
                 .customShadow()
             }
-            .sheet(isPresented: $showAlert) {
-                LeavePageAlertView(showAlert: $showAlert)
+            .sheet(isPresented: $vm.showAlert) {
+                LeavePageAlertView(showAlert: $vm.showAlert)
                     .background(.white)
                     .presentationDetents([.fraction(0.5)])
             }
         }
-    }
-}
-
-extension NominationFormView {
-    func isAllFieldsFilledOut() -> Bool {
-        if selectedFeeling != nil && !selectedNominee.isEmpty && !reasoningText.isEmpty {
-            return true
+        .onDisappear() {
+            vm.reset()
         }
-        return false
-    }
-    
-    func isAPartOffFieldsFilledOut() -> Bool {
-        if selectedFeeling != nil || !selectedNominee.isEmpty || !reasoningText.isEmpty {
-            return true
-        }
-        return false
     }
 }
 
 #Preview {
-    NominationFormView()
-        .environmentObject(HomeViewModel())
+    NavigationStack {
+        NominationFormView()
+            .environmentObject(HomeViewModel())
+    }
 }

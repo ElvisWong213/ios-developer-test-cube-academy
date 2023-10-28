@@ -8,20 +8,35 @@
 
 import SwiftUI
 
-enum FeelingKey: Codable {
-    case VeryUnfair, Unfair, NotSure, Fair, VeryFair
+enum FeelingKey: String, Codable {
+    case VeryUnfair, Unfair, NotSure, Fair, VeryFair, Null
     
-    enum CodingKeys: String, CodingKey {
-        case VeryUnfair = "very_unfair"
-        case Unfair = "unfair"
-        case NotSure = "not_sure"
-        case Fair = "fair"
-        case VeryFair = "very_fair"
+    var rawValue: String  {
+        switch self {
+        case .VeryUnfair:
+            return "very_unfair"
+        case .Unfair:
+            return "unfair"
+        case .NotSure :
+            return "not_sure"
+        case .Fair:
+            return "fair"
+        case .VeryFair:
+            return "very_fair"
+        case .Null:
+            return ""
+        }
+    }
+    
+    var isEmpty: Bool {
+        get {
+            return self == .Null
+        }
     }
 }
 
 struct FeelingPicker: View {
-    @Binding var selected: FeelingKey?
+    @Binding var selected: FeelingKey
     
     var body: some View {
         VStack(spacing: 10) {
@@ -33,5 +48,5 @@ struct FeelingPicker: View {
 }
 
 #Preview {
-    FeelingPicker(selected: .constant(nil))
+    FeelingPicker(selected: .constant(.Null))
 }

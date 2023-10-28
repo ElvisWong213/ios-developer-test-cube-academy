@@ -26,7 +26,7 @@ struct LeavePageAlertView: View {
                 .padding([.horizontal, .bottom])
             VStack(spacing: 0) {
                 SecondaryButtton(text: "Yes, leave page") {
-                    homeVM.createNewNomination = false
+                    homeVM.path = []
                 }
                 SecondaryButtton(text: "Cancel") {
                     showAlert.toggle()

@@ -13,7 +13,7 @@ struct HomeView: View {
     @EnvironmentObject var vm: HomeViewModel
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $vm.path) {
             VStack(spacing: 0) {
                 HeaderBarView()
                 if vm.nominationlist.isEmpty {
@@ -32,16 +32,28 @@ struct HomeView: View {
                     .listStyle(.plain)
                 }
                 PrimaryButton(text: "create new nomination") {
-                    vm.createNewNomination = true
+                    vm.path.append(.NominationForm)
                 }
                 .customShadow()
-                .navigationDestination(isPresented: $vm.createNewNomination) {
-                    NominationFormView()
-                        .navigationBarBackButtonHidden()
-                }
+                .navigationDestination(for: ViewEnum.self, destination: { view in
+                    switch view {
+                    case .Home:
+                        HomeView()
+                    case .NominationForm:
+                        NominationFormView()
+                            .navigationBarBackButtonHidden()
+                    case .Submitted:
+                        SubmittedView()
+                            .navigationBarBackButtonHidden()
+                    }
+                })
                 
             }
             .background(.cubeLightGrey)
+        }
+        .refreshable {
+            vm.getAllNominees()
+            vm.getAllNominations()
         }
         .onAppear() {
             vm.getAllNominees()

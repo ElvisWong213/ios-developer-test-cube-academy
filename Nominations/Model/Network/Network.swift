@@ -19,8 +19,17 @@ class Network {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = request.method
         urlRequest.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        if request.method == "POST" {
+            guard let data = request.data else {
+                throw NetworkError.InvalidData
+            }
+            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.httpBody = data
+            print(String(decoding: data, as: UTF8.self))
+        }
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+        guard let response = response as? HTTPURLResponse, response.statusCode >= 200 && response.statusCode < 300 else {
+            print(response)
             throw NetworkError.InvalidResponse
         }
         let decoded = try JSONDecoder().decode(T.self, from: data)
@@ -42,7 +51,7 @@ class Network {
 
 
 enum NetworkError: LocalizedError {
-    case InvalidResponse, InvalidURL, InvalidToken
+    case InvalidResponse, InvalidURL, InvalidToken, InvalidData
 }
 
 enum RestEnum {
@@ -51,10 +60,10 @@ enum RestEnum {
     
     // Nomination
     case getAllNominations
-    case getNominationById(nomination_id: String)
-    case createNomination(nomination: Nomination)
-    case updateNomination(nomination_id: String, nomination: Nomination)
-    case deleteNomination(nomination_id: String)
+    case getNominationById(nominationId: String)
+    case createNomination(nominationRequest: NominationRequest)
+    case updateNomination(nominationId: String, nominationRequest: NominationRequest)
+    case deleteNomination(nominationId: String)
 }
 
 extension RestEnum {
@@ -82,19 +91,19 @@ extension RestEnum {
         case .getAllNominees:
             return "nominee"
         case .getAllNominations:
-            return "nominations"
-        case .getNominationById(nomination_id: let nomination_id):
+            return "nomination"
+        case .getNominationById(nominationId: let nomination_id):
             return "nomination/\(nomination_id)"
         case .createNomination:
             return "nomination"
         case .updateNomination(nomination_id: let nomination_id):
             return "nomination/\(nomination_id)"
-        case .deleteNomination(nomination_id: let nomination_id):
+        case .deleteNomination(nominationId: let nomination_id):
             return "nomination/\(nomination_id)"
         }
     }
     
-    var Data: Data? {
+    var data: Data? {
         switch self {
         case .getAllNominees:
             return nil
@@ -102,17 +111,17 @@ extension RestEnum {
             return nil
         case .getNominationById:
             return nil
-        case .createNomination(nomination: let nomination):
-            guard let data = try? JSONEncoder().encode(nomination) else {
+        case .createNomination(nominationRequest: let nominationRequest):
+            guard let data = try? JSONEncoder().encode(nominationRequest) else {
                 return nil
             }
             return data
-        case .updateNomination(nomination_id: _, nomination: let nomination):
-            guard let data = try? JSONEncoder().encode(nomination) else {
+        case .updateNomination(nominationId: _, nominationRequest: let nominationRequest):
+            guard let data = try? JSONEncoder().encode(nominationRequest) else {
                 return nil
             }
             return data
-        case .deleteNomination(nomination_id: _):
+        case .deleteNomination(nominationId: _):
             return nil
         }
     }
