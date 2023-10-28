@@ -16,20 +16,27 @@ struct HomeView: View {
         NavigationStack(path: $vm.path) {
             VStack(spacing: 0) {
                 HeaderBarView()
-                if vm.nominationlist.isEmpty {
+                List {
                     NominationsHeaderView()
-                    ListEmptyView()
-                } else {
-                    List {
-                        NominationsHeaderView()
+                        .listRowInsets(EdgeInsets())
+                    if vm.nominationlist.isEmpty {
+                        ListEmptyView()
                             .listRowInsets(EdgeInsets())
+                    } else {
                         ForEach(vm.nominationlist, id: \.nominationId) { nomination in
                             if let name = vm.nomineeList.first(where: { $0.nomineeId == nomination.nomineeId }) {
                                 NominationsListItem(name: "\(name.firstName) \(name.lastName)", reason: nomination.reason)
                             }
                         }
+                        .onDelete(perform: { indexSet in
+                            vm.removeNominations(atOffsets: indexSet)
+                        })
                     }
-                    .listStyle(.plain)
+                }
+                .listStyle(.plain)
+                .refreshable {
+                    vm.getAllNominees()
+                    vm.getAllNominations()
                 }
                 PrimaryButton(text: "create new nomination") {
                     vm.path.append(.NominationForm)
@@ -50,10 +57,6 @@ struct HomeView: View {
                 
             }
             .background(.cubeLightGrey)
-        }
-        .refreshable {
-            vm.getAllNominees()
-            vm.getAllNominations()
         }
         .onAppear() {
             vm.getAllNominees()

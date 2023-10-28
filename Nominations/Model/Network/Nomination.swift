@@ -31,8 +31,11 @@ struct NominationResponse: Codable {
         case nomineeId = "nominee_id"
         case dateSubmitted = "date_submitted"
         case closingDate = "closing_date"
-        
     }
+}
+
+struct DeleteNominationResponse: Codable {
+    let data: String
 }
 
 // MARK: - Request

@@ -25,9 +25,18 @@ final class NominationsTestsNetwork: XCTestCase {
     }
     
     func testCreateNomination() async throws {
-        let nomination: NominationRequest = .init(nomineeId: "9a4bd093-e74c-4918-87cc-0c689cca78bf", reason: "ABC", process: "very_fair")
+        let nomination: NominationRequest = .init(nomineeId: "9a4bd093-e74c-4918-87cc-0c689cca78bf", reason: "ABC", process: .VeryFair)
         let response = try await Network.makeRequest(request: .createNomination(nominationRequest: nomination)) as CreateNominationResponse
-        print(response.data)
+        XCTAssertEqual(response.data.nomineeId, nomination.nomineeId)
+        XCTAssertEqual(response.data.reason, nomination.reason)
+        XCTAssertEqual(response.data.process, nomination.process.rawValue)
+    }
+    
+    func testRemoveNomination() async throws {
+        let nomination: NominationRequest = .init(nomineeId: "9a4bd093-e74c-4918-87cc-0c689cca78bf", reason: "ABC", process: .VeryFair)
+        let nominationResponse = try await Network.makeRequest(request: .createNomination(nominationRequest: nomination)) as CreateNominationResponse
+        let response = try await Network.makeRequest(request: .deleteNomination(nominationId: nominationResponse.data.nominationId)) as DeleteNominationResponse
+        XCTAssertEqual(response.data, "Nomination deleted successfully")
     }
 
 }

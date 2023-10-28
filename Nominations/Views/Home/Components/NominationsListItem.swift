@@ -22,6 +22,7 @@ struct NominationsListItem: View {
                     .padding(.bottom)
                 Text(reason)
                     .font(TextStyle.body.font)
+                    .lineLimit(1)
             }
             .padding(.vertical)
             Spacer()

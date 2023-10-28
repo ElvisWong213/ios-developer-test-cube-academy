@@ -11,21 +11,27 @@ import CubeFoundationSwiftUI
 
 struct PrimaryButton: View {
     let text: String
+    var isLoading: Bool = false
     let action: (() -> Void)
     
-    @Environment(\.isEnabled) var isEnabled
-
     var body: some View {
         Button {
             action()
         } label: {
-            Text(text)
-                .textCase(.uppercase)
-                .foregroundStyle(.white)
-                .font(TextStyle.button.font)
-                .bold()
-                .padding()
-                .frame(maxWidth: .infinity)
+            Group {
+                if isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                } else {
+                    Text(text)
+                        .textCase(.uppercase)
+                        .foregroundStyle(.white)
+                        .font(TextStyle.button.font)
+                        .bold()
+                }
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
         }
         .buttonStyle(CustomButton())
         .padding()
@@ -54,12 +60,15 @@ struct PrimaryButton: View {
 
 #Preview {
     VStack {
-        PrimaryButton(text: "Hello world") {
-            
+        PrimaryButton(text: "Hello world", isLoading: false) {
+            print("Button 1")
         }
         .disabled(true)
-        PrimaryButton(text: "Hello world") {
-            
+        PrimaryButton(text: "Hello world", isLoading: false) {
+            print("Button 2")
+        }
+        PrimaryButton(text: "Hello world", isLoading: true) {
+            print("Button 3")
         }
     }
 }

@@ -31,4 +31,17 @@ class HomeViewModel: ObservableObject {
             nomineeList = response.data
         }
     }
+    
+    func removeNominations(atOffsets: IndexSet) {
+        Task {
+            for index in atOffsets {
+                guard let response = try? await Network.makeRequest(request: .deleteNomination(nominationId: nominationlist[index].nominationId)) as DeleteNominationResponse else {
+                    print("Fail to remove")
+                    return
+                }
+                print(response.data)
+                nominationlist.remove(atOffsets: atOffsets)
+            }
+        }
+    }
 }

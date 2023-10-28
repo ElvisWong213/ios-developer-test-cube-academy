@@ -25,7 +25,7 @@ class Network {
             }
             urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpBody = data
-            print(String(decoding: data, as: UTF8.self))
+//            print(String(decoding: data, as: UTF8.self))
         }
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         guard let response = response as? HTTPURLResponse, response.statusCode >= 200 && response.statusCode < 300 else {

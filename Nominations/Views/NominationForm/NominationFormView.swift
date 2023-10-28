@@ -12,6 +12,8 @@ import CubeFoundationSwiftUI
 struct NominationFormView: View {
     @EnvironmentObject var homeVM: HomeViewModel
     @StateObject var vm = NominationFormViewModel()
+    @State var showAlert = false
+    @State var isLoading = false
     
     var body: some View {
         ZStack {
@@ -92,17 +94,27 @@ struct NominationFormView: View {
                             homeVM.path = []
                         }
                     }
-                    PrimaryButton(text: "Submit nomination") {
-                        Task {
-                            guard let response = await vm.submitForm() else {
-                                // TODO: Add alert
-                                return
+                    PrimaryButton(text: "Submit nomination", isLoading: isLoading) {
+                        if isLoading == false {
+                            isLoading = true
+                            Task {
+                                guard let response = await vm.submitForm() else {
+                                    showAlert = true
+                                    isLoading = false
+                                    return
+                                }
+                                isLoading = false
+                                homeVM.path.append(.Submitted)
+                                homeVM.nominationlist.append(response.data)
                             }
-                            homeVM.path.append(.Submitted)
-                            homeVM.nominationlist.append(response.data)
                         }
                     }
                     .disabled(!vm.nominationRequest.isAllFilledOut)
+                    .alert("Unable to submit", isPresented: $showAlert, actions: {
+                        
+                    }, message: {
+                        Text("Please Try again later")
+                    })
                     .frame(width: UIScreen.main.bounds.width / 3 * 2)
                 }
                 .customShadow()
