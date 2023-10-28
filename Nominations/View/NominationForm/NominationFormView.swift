@@ -10,8 +10,11 @@ import SwiftUI
 import CubeFoundationSwiftUI
 
 struct NominationFormView: View {
+    @EnvironmentObject var homeVM: HomeViewModel
     @State var showAlert: Bool = false
-    @State var reasoningText: String = "David always goes above and beyond with all the work that he does. He’s also a lovey person to work with!"
+    @State var selectedNominee: String = ""
+    @State var reasoningText: String = ""
+    @State var selectedFeeling: FeelingKey?
     
     var body: some View {
         ZStack {
@@ -21,36 +24,50 @@ struct NominationFormView: View {
                     Image(.team)
                         .resizable()
                         .scaledToFit()
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 20) {
                         Text("I'd like to nominate...")
                             .textCase(.uppercase)
                             .font(TextStyle.boldHeadlineSmall.font)
                             .bold()
                         Text("Please select a cube who you fell has done someting honourable this month or just all round has a great work ethic.")
                             .font(TextStyle.body.font)
-                        Text("Cube's name")
-                            .font(TextStyle.boldHeadlineSmallest.font)
-                            .bold()
-                        Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
-                            /*@START_MENU_TOKEN@*/Text("1").tag(1)/*@END_MENU_TOKEN@*/
-                            /*@START_MENU_TOKEN@*/Text("2").tag(2)/*@END_MENU_TOKEN@*/
+                        HStack {
+                            Text("*")
+                                .foregroundStyle(.accent) +
+                            Text("Cube's name")
+                        }
+                        .font(TextStyle.boldHeadlineSmallest.font)
+                        .bold()
+                        Picker(selection: $selectedNominee, label: Text("Club's name")) {
+                            Text("-- Pick a name --")
+                                .tag("")
+                            ForEach(homeVM.nomineeList, id: \.nomineeId) { nominee in
+                                Text("\(nominee.firstName) \(nominee.lastName)")
+                                    .tag(nominee.nomineeId)
+                            }
                         }
                         .pickerStyle(.menu)
                         Divider()
+                            .padding(.vertical)
                         Text("I'd like to nominate this cube because...")
                             .textCase(.uppercase)
                             .font(TextStyle.boldHeadlineSmall.font)
                             .bold()
                         Text("Please let us know why you think this cube deserves the 'cub of the month' title 🏆⭐")
                             .font(TextStyle.body.font)
-                        Text("Reasoning")
-                            .font(TextStyle.boldHeadlineSmallest.font)
-                            .bold()
+                        HStack {
+                            Text("*")
+                                .foregroundStyle(.accent) +
+                            Text("Reasoning")
+                        }
+                        .font(TextStyle.boldHeadlineSmallest.font)
+                        .bold()
                         TextEditor(text: $reasoningText)
                             .frame(height: 200)
                             .border(Color.black, width: 1)
                             .font(TextStyle.body.font)
                         Divider()
+                            .padding(.vertical)
                         HStack {
                             Text("is how we currently run")
                                 .bold() +
@@ -63,35 +80,52 @@ struct NominationFormView: View {
                         .bold()
                         Text("As you know, out the nominees chosen, we spin a wheel to pick the cube of the month. What's your opinion on this method?")
                             .font(TextStyle.body.font)
-                        Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
-                            /*@START_MENU_TOKEN@*/Text("1").tag(1)/*@END_MENU_TOKEN@*/
-                            /*@START_MENU_TOKEN@*/Text("2").tag(2)/*@END_MENU_TOKEN@*/
-                        }
-                        .pickerStyle(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Picker Style@*/DefaultPickerStyle()/*@END_MENU_TOKEN@*/)
+                        FeelingPicker(selected: $selectedFeeling)
                     }
                     .padding()
                 }
                 HStack(spacing: 0) {
                     SecondaryButtton(text: "Back") {
-                        showAlert.toggle()
+                        if isAPartOffFieldsFilledOut() {
+                            showAlert.toggle()
+                        } else {
+                            homeVM.createNewNomination = false
+                        }
                     }
                     PrimaryButton(text: "Submit nomination") {
-                        
+                        print("Submit")
                     }
+                    .disabled(!isAllFieldsFilledOut())
                     .frame(width: UIScreen.main.bounds.width / 3 * 2)
                 }
                 .customShadow()
             }
-            VStack(spacing: 0) {
-                Color(red: 0, green: 0, blue: 0, opacity: 0.8)
+            .sheet(isPresented: $showAlert) {
                 LeavePageAlertView(showAlert: $showAlert)
                     .background(.white)
+                    .presentationDetents([.fraction(0.5)])
             }
-            .opacity(showAlert ? 1 : 0)
         }
+    }
+}
+
+extension NominationFormView {
+    func isAllFieldsFilledOut() -> Bool {
+        if selectedFeeling != nil && !selectedNominee.isEmpty && !reasoningText.isEmpty {
+            return true
+        }
+        return false
+    }
+    
+    func isAPartOffFieldsFilledOut() -> Bool {
+        if selectedFeeling != nil || !selectedNominee.isEmpty || !reasoningText.isEmpty {
+            return true
+        }
+        return false
     }
 }
 
 #Preview {
     NominationFormView()
+        .environmentObject(HomeViewModel())
 }

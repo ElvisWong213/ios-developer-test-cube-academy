@@ -24,7 +24,7 @@ struct HeaderBarView: View {
             if let title {
                 Text(title)
                     .style(.navigationBar)
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
             } else {
                 Image(.logoIcon)
                     .resizable()

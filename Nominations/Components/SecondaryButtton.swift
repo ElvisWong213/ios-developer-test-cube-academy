@@ -21,20 +21,45 @@ struct SecondaryButtton: View {
         } label: {
             Text(text)
                 .textCase(.uppercase)
-                .foregroundStyle(.black)
                 .font(TextStyle.button.font)
                 .bold()
                 .padding()
                 .frame(maxWidth: .infinity)
-                .border(.black, width: 2)
         }
-        .background(.white)
+        .buttonStyle(CustomButton())
         .padding()
+    }
+    
+    struct CustomButton: ButtonStyle {
+        @Environment(\.isEnabled) var isEnabled
+
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .background(.white)
+                .foregroundStyle(isEnabled ? .black : .cubeDarkGrey)
+                .border(buttonColor(isPressed: configuration.isPressed), width: 2)
+        }
+        
+        func buttonColor(isPressed: Bool) -> Color {
+            if !isEnabled {
+                return .cubeMidGrey
+            }
+            if isPressed {
+                return .accent
+            }
+            return .black
+        }
     }
 }
 
 #Preview {
-    SecondaryButtton(text: "Test") {
-        
+    VStack {
+        SecondaryButtton(text: "Test") {
+            
+        }
+        .disabled(true)
+        SecondaryButtton(text: "Test") {
+            
+        }
     }
 }

@@ -14,7 +14,7 @@ struct PrimaryButton: View {
     let action: (() -> Void)
     
     @Environment(\.isEnabled) var isEnabled
-    
+
     var body: some View {
         Button {
             action()
@@ -26,15 +26,40 @@ struct PrimaryButton: View {
                 .bold()
                 .padding()
                 .frame(maxWidth: .infinity)
-                .border(.black, width: 2)
         }
-        .background(.black)
+        .buttonStyle(CustomButton())
         .padding()
+    }
+    
+    struct CustomButton: ButtonStyle {
+        @Environment(\.isEnabled) var isEnabled
+
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .border(isEnabled ? .black : .cubeMidGrey, width: 2)
+                .background(buttonColor(isPressed: configuration.isPressed))
+        }
+        
+        func buttonColor(isPressed: Bool) -> Color {
+            if !isEnabled {
+                return .cubeMidGrey
+            }
+            if isPressed {
+                return .cubeDarkGrey
+            }
+            return .black
+        }
     }
 }
 
 #Preview {
-    PrimaryButton(text: "Hello world") {
-        
+    VStack {
+        PrimaryButton(text: "Hello world") {
+            
+        }
+        .disabled(true)
+        PrimaryButton(text: "Hello world") {
+            
+        }
     }
 }
