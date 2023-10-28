@@ -17,6 +17,8 @@ class NominationFormViewModel: ObservableObject {
         nominationRequest = NominationRequest(nomineeId: "", reason: "", process: .Null)
     }
     
+    /// Submit new nomination
+    /// - Returns: response from API
     func submitForm() async -> CreateNominationResponse? {
         guard nominationRequest.isAllFilledOut else { return nil }
         

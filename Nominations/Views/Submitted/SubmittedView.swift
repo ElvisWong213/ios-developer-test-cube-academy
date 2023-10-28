@@ -15,6 +15,8 @@ struct SubmittedView: View {
     var body: some View {
         VStack(spacing: 0) {
             HeaderBarView(title: "Nomination Submitted")
+            
+            // MARK: - Body
             Image(.group)
                 .resizable()
                 .scaledToFit()
@@ -29,6 +31,8 @@ struct SubmittedView: View {
             }
             .padding()
             Spacer()
+            
+            // MARK: - Bottom
             VStack(spacing: 0) {
                 PrimaryButton(text: "Create new nomination") {
                     homeVM.path.removeLast()

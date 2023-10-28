@@ -12,9 +12,7 @@ import CubeFoundationSwiftUI
 struct SecondaryButtton: View {
     let text: String
     let action: (() -> Void)
-    
-    @Environment(\.isEnabled) var isEnabled
-    
+        
     var body: some View {
         Button {
             action()
@@ -26,11 +24,11 @@ struct SecondaryButtton: View {
                 .padding()
                 .frame(maxWidth: .infinity)
         }
-        .buttonStyle(CustomButton())
+        .buttonStyle(CustomButtonStyle())
         .padding()
     }
     
-    struct CustomButton: ButtonStyle {
+    struct CustomButtonStyle: ButtonStyle {
         @Environment(\.isEnabled) var isEnabled
 
         func makeBody(configuration: Configuration) -> some View {

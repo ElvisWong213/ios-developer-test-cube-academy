@@ -11,37 +11,42 @@ import CubeFoundationSwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var vm: HomeViewModel
+    @State var isRefreshed = false
     
     var body: some View {
         NavigationStack(path: $vm.path) {
             VStack(spacing: 0) {
                 HeaderBarView()
-                List {
-                    NominationsHeaderView()
-                        .listRowInsets(EdgeInsets())
-                    if vm.nominationlist.isEmpty {
-                        ListEmptyView()
+                // MARK: - Body
+                if vm.nominationlist.isEmpty {
+                    GeometryReader { geo in
+                        ListEmptyView(height: geo.size.height, isRefreshed: $isRefreshed)
+                    }
+                } else {
+                    List {
+                        NominationsHeaderView()
                             .listRowInsets(EdgeInsets())
-                    } else {
                         ForEach(vm.nominationlist, id: \.nominationId) { nomination in
                             if let name = vm.nomineeList.first(where: { $0.nomineeId == nomination.nomineeId }) {
                                 NominationsListItem(name: "\(name.firstName) \(name.lastName)", reason: nomination.reason)
                             }
                         }
                         .onDelete(perform: { indexSet in
-                            vm.removeNominations(atOffsets: indexSet)
+                            vm.removeNomination(atOffsets: indexSet)
                         })
                     }
+                    .listStyle(.plain)
+                    .refreshable {
+                        vm.getAllNominees()
+                        vm.getAllNominations()
+                    }
                 }
-                .listStyle(.plain)
-                .refreshable {
-                    vm.getAllNominees()
-                    vm.getAllNominations()
-                }
+                // MARK: - Bottom
                 PrimaryButton(text: "create new nomination") {
                     vm.path.append(.NominationForm)
                 }
                 .customShadow()
+                // MARK: - This control navigatio of all the view
                 .navigationDestination(for: ViewEnum.self, destination: { view in
                     switch view {
                     case .Home:
@@ -58,9 +63,17 @@ struct HomeView: View {
             }
             .background(.cubeLightGrey)
         }
+        
+        // MARK: - Get and refresh data from API
         .onAppear() {
             vm.getAllNominees()
             vm.getAllNominations()
+        }
+        .onChange(of: isRefreshed) {
+            if isRefreshed == true {
+                vm.getAllNominees()
+                vm.getAllNominations()
+            }
         }
     }
 }

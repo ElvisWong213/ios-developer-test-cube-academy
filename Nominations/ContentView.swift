@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var homeVM = HomeViewModel()
+    
     var body: some View {
         HomeView()
             .environmentObject(homeVM)

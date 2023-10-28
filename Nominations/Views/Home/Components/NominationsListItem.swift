@@ -31,5 +31,8 @@ struct NominationsListItem: View {
 }
 
 #Preview {
-    NominationsListItem(name: "Elvis", reason: "Hello world")
+    List {
+        NominationsListItem(name: "Elvis", reason: "Hello world")
+    }
+    .listStyle(.plain)
 }

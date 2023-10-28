@@ -20,6 +20,7 @@ struct PrimaryButton: View {
         } label: {
             Group {
                 if isLoading {
+                    // Show the loading circle when user submited the form and waiting for response
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                 } else {
@@ -33,11 +34,11 @@ struct PrimaryButton: View {
             .padding()
             .frame(maxWidth: .infinity)
         }
-        .buttonStyle(CustomButton())
+        .buttonStyle(CustomButtonStyle())
         .padding()
     }
     
-    struct CustomButton: ButtonStyle {
+    struct CustomButtonStyle: ButtonStyle {
         @Environment(\.isEnabled) var isEnabled
 
         func makeBody(configuration: Configuration) -> some View {
@@ -60,13 +61,16 @@ struct PrimaryButton: View {
 
 #Preview {
     VStack {
+        // Active and Pressed
         PrimaryButton(text: "Hello world", isLoading: false) {
             print("Button 1")
         }
-        .disabled(true)
+        // Inactive
         PrimaryButton(text: "Hello world", isLoading: false) {
             print("Button 2")
         }
+        .disabled(true)
+        // Loading
         PrimaryButton(text: "Hello world", isLoading: true) {
             print("Button 3")
         }

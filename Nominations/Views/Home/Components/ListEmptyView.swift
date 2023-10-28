@@ -11,28 +11,40 @@ import CubeFoundationSwiftUI
 
 
 struct ListEmptyView: View {
+    let height: CGFloat
+    @Binding var isRefreshed: Bool
+    
     var body: some View {
-        ZStack {
-            Color(.cubeLightGrey)
-                .ignoresSafeArea()
-            VStack {
-                Spacer()
-                Image(systemName: "tray.fill")
-                    .font(.system(size: 100))
-                    .padding()
-                Text("Once you submit a nomination, you will be able to see it here.")
-                    .multilineTextAlignment(.center)
-                    .font(TextStyle.boldHeadlineMedium.font)
-                    .bold()
-                    .textCase(.uppercase)
-                    .padding()
-                Spacer()
+        ScrollView {
+            ZStack {
+                Color(.cubeLightGrey)
+                    .ignoresSafeArea()
+                VStack {
+                    NominationsHeaderView()
+                    Spacer()
+                    Image(systemName: "tray.fill")
+                        .font(.system(size: 100))
+                        .padding()
+                    Text("Once you submit a nomination, you will be able to see it here.")
+                        .multilineTextAlignment(.center)
+                        .font(TextStyle.boldHeadlineMedium.font)
+                        .bold()
+                        .textCase(.uppercase)
+                        .padding()
+                    Spacer()
+                }
+                .foregroundStyle(.cubeDarkGrey)
             }
-            .foregroundStyle(.cubeDarkGrey)
+            .frame(height: height)
+        }
+        .refreshable {
+            isRefreshed = true
         }
     }
 }
 
 #Preview {
-    ListEmptyView()
+    GeometryReader { geo in
+        ListEmptyView(height: geo.size.height, isRefreshed: .constant(false))
+    }
 }

@@ -14,6 +14,7 @@ class HomeViewModel: ObservableObject {
     @Published var nomineeList: [Nominee] = []
     @Published var path: [ViewEnum] = []
     
+    /// Get Nominations from API
     func getAllNominations() {
         Task {
             guard let response = try? await Network.makeRequest(request: .getAllNominations) as AllNominationsResponse else {
@@ -23,6 +24,7 @@ class HomeViewModel: ObservableObject {
         }
     }
     
+    /// Get Nominees from API
     func getAllNominees() {
         Task {
             guard let response = try? await Network.makeRequest(request: .getAllNominees) as AllNominees else {
@@ -32,7 +34,8 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    func removeNominations(atOffsets: IndexSet) {
+    /// Send delete nomination request
+    func removeNomination(atOffsets: IndexSet) {
         Task {
             for index in atOffsets {
                 guard let response = try? await Network.makeRequest(request: .deleteNomination(nominationId: nominationlist[index].nominationId)) as DeleteNominationResponse else {

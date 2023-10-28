@@ -10,15 +10,22 @@ import Foundation
 
 class Network {
     static func makeRequest<T: Codable>(request: RestEnum) async throws -> T {
+        // If url is nil throw error
         guard let url = URL(string: request.baseURL + request.path) else {
             throw NetworkError.InvalidURL
         }
+        // If there is not token throw error
         guard let token = Network.getToken() else {
             throw NetworkError.InvalidToken
         }
+        
+        // Setup requset with url
         var urlRequest = URLRequest(url: url)
+        // Define request method
         urlRequest.httpMethod = request.method
+        // Add token
         urlRequest.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        // Add data to requset when method is POST
         if request.method == "POST" {
             guard let data = request.data else {
                 throw NetworkError.InvalidData
@@ -27,15 +34,21 @@ class Network {
             urlRequest.httpBody = data
 //            print(String(decoding: data, as: UTF8.self))
         }
+        
+        // Send requset
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        // If respone is invalid throw error
         guard let response = response as? HTTPURLResponse, response.statusCode >= 200 && response.statusCode < 300 else {
             print(response)
             throw NetworkError.InvalidResponse
         }
+        
+        // Decode data
         let decoded = try JSONDecoder().decode(T.self, from: data)
         return decoded
     }
     
+    /// Take token from info.plist
     static func getToken() -> String? {
         guard let filePath = Bundle.main.path(forResource: "AuthToken", ofType: "plist") else {
             return nil
@@ -67,6 +80,8 @@ enum RestEnum {
 }
 
 extension RestEnum {
+    
+    // Requset method
     var method: String {
         switch self {
         case .getAllNominees, .getAllNominations, .getNominationById:
@@ -80,12 +95,14 @@ extension RestEnum {
         }
     }
     
+    // API base url
     var baseURL: String {
         get {
             return "https://cube-academy-api.cubeapis.com/api/"
         }
     }
     
+    // API path
     var path: String {
         switch self {
         case .getAllNominees:
@@ -103,6 +120,7 @@ extension RestEnum {
         }
     }
     
+    // Encode json data
     var data: Data? {
         switch self {
         case .getAllNominees:
