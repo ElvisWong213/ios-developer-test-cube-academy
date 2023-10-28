@@ -34,11 +34,11 @@ struct PrimaryButton: View {
             .padding()
             .frame(maxWidth: .infinity)
         }
-        .buttonStyle(CustomButtonStyle())
+        .buttonStyle(PrimaryButtonStyle())
         .padding()
     }
     
-    struct CustomButtonStyle: ButtonStyle {
+    struct PrimaryButtonStyle: ButtonStyle {
         @Environment(\.isEnabled) var isEnabled
 
         func makeBody(configuration: Configuration) -> some View {

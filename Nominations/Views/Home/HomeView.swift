@@ -11,7 +11,6 @@ import CubeFoundationSwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var vm: HomeViewModel
-    @State var isRefreshed = false
     
     var body: some View {
         NavigationStack(path: $vm.path) {
@@ -20,7 +19,7 @@ struct HomeView: View {
                 // MARK: - Body
                 if vm.nominationlist.isEmpty {
                     GeometryReader { geo in
-                        ListEmptyView(height: geo.size.height, isRefreshed: $isRefreshed)
+                        ListEmptyView(height: geo.size.height, isRefreshed: $vm.isRefreshed)
                     }
                 } else {
                     List {
@@ -69,8 +68,8 @@ struct HomeView: View {
             vm.getAllNominees()
             vm.getAllNominations()
         }
-        .onChange(of: isRefreshed) {
-            if isRefreshed == true {
+        .onChange(of: vm.isRefreshed) {
+            if vm.isRefreshed == true {
                 vm.getAllNominees()
                 vm.getAllNominations()
             }

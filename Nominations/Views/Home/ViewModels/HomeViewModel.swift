@@ -13,6 +13,7 @@ class HomeViewModel: ObservableObject {
     @Published var nominationlist: [NominationResponse] = []
     @Published var nomineeList: [Nominee] = []
     @Published var path: [ViewEnum] = []
+    @Published var isRefreshed = false
     
     /// Get Nominations from API
     func getAllNominations() {

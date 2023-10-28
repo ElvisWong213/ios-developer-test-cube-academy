@@ -9,11 +9,13 @@
 import Foundation
 
 class NominationFormViewModel: ObservableObject {
-    @Published var showAlert: Bool = false
+    @Published var showSheet: Bool = false
     @Published var nominationRequest: NominationRequest = NominationRequest(nomineeId: "", reason: "", process: .Null)
+    @Published var showAlert = false
+    @Published var isLoading = false
     
     func reset() {
-        showAlert = false
+        showSheet = false
         nominationRequest = NominationRequest(nomineeId: "", reason: "", process: .Null)
     }
     

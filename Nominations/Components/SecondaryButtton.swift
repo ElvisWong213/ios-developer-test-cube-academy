@@ -11,18 +11,27 @@ import CubeFoundationSwiftUI
 
 struct SecondaryButtton: View {
     let text: String
+    var isLoading: Bool = false
     let action: (() -> Void)
         
     var body: some View {
         Button {
             action()
         } label: {
-            Text(text)
-                .textCase(.uppercase)
-                .font(TextStyle.button.font)
-                .bold()
-                .padding()
-                .frame(maxWidth: .infinity)
+            Group {
+                if isLoading {
+                    // Show the loading circle when user submited the form and waiting for response
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                } else {
+                    Text(text)
+                        .textCase(.uppercase)
+                        .font(TextStyle.button.font)
+                        .bold()
+                }
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
         }
         .buttonStyle(CustomButtonStyle())
         .padding()
@@ -55,8 +64,11 @@ struct SecondaryButtton: View {
         SecondaryButtton(text: "Test") {
             
         }
-        .disabled(true)
         SecondaryButtton(text: "Test") {
+            
+        }
+        .disabled(true)
+        SecondaryButtton(text: "Test", isLoading: true) {
             
         }
     }

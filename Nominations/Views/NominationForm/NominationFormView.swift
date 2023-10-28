@@ -12,8 +12,6 @@ import CubeFoundationSwiftUI
 struct NominationFormView: View {
     @EnvironmentObject var homeVM: HomeViewModel
     @StateObject var vm = NominationFormViewModel()
-    @State var showAlert = false
-    @State var isLoading = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -25,7 +23,7 @@ struct NominationFormView: View {
                 VStack(alignment: .leading) {
                     
                     // MARK: - Name
-                    Sector(titleText: "I'd like to nominate...", bodyText: "Please select a cube who you fell has done someting honourable this month or just all round has a great work ethic.", secondTitleText: "Cube's name")
+                    FormTextView(titleText: { Text("I'd like to nominate...") }, bodyText: "Please select a cube who you fell has done someting honourable this month or just all round has a great work ethic.", secondTitleText: "Cube's name")
                     Picker(selection: $vm.nominationRequest.nomineeId, label: Text("Club's name")) {
                         Text("-- Pick a name --")
                             .tag("")
@@ -40,11 +38,12 @@ struct NominationFormView: View {
                         .padding(.vertical)
                     
                     // MARK: - Reasoning
-                    Sector(titleText: "I'd like to nominate this cube because...", bodyText: "Please let us know why you think this cube deserves the 'cub of the month' title 🏆⭐", secondTitleText: "Reasoning")
+                    FormTextView(titleText: { Text("I'd like to nominate this cube because...") }, bodyText: "Please let us know why you think this cube deserves the 'cub of the month' title 🏆⭐", secondTitleText: "Reasoning")
                     TextEditor(text: $vm.nominationRequest.reason)
                         .frame(height: 200)
                         .border(Color.black, width: 1)
                         .font(TextStyle.body.font)
+                        // Max characters: 280
                         .onChange(of: vm.nominationRequest.reason) {
                             vm.nominationRequest.reason = String(vm.nominationRequest.reason.prefix(280))
                         }
@@ -53,7 +52,7 @@ struct NominationFormView: View {
                         .padding(.vertical)
                     
                     // MARK: - Feeling
-                    VStack(alignment: .leading, spacing: 10) {
+                    FormTextView(titleText: {
                         // Text in same line, having difference text style or color
                         HStack {
                             Text("is how we currently run") +
@@ -61,14 +60,7 @@ struct NominationFormView: View {
                                 .foregroundStyle(.accent) +
                             Text("fair?")
                         }
-                        .textCase(.uppercase)
-                        .font(TextStyle.boldHeadlineSmall.font)
-                        .bold()
-                        Text("As you know, out the nominees chosen, we spin a wheel to pick the cube of the month. What's your opinion on this method?")
-                            .font(TextStyle.body.font)
-                            .lineSpacing(5)
-                            .padding(.bottom)
-                    }
+                    }, bodyText: "As you know, out the nominees chosen, we spin a wheel to pick the cube of the month. What's your opinion on this method?", secondTitleText: "")
                     FeelingPicker(selected: $vm.nominationRequest.process)
                 }
                 .padding()
@@ -78,23 +70,23 @@ struct NominationFormView: View {
             HStack(spacing: 0) {
                 SecondaryButtton(text: "Back") {
                     if vm.nominationRequest.isAPartFilledOut {
-                        vm.showAlert.toggle()
+                        vm.showSheet.toggle()
                     } else {
                         homeVM.path = []
                     }
                 }
-                PrimaryButton(text: "Submit nomination", isLoading: isLoading) {
+                PrimaryButton(text: "Submit nomination", isLoading: vm.isLoading) {
                     // Prevent user submit multiple times to the API, when they have bad internet connection
-                    if isLoading == false {
-                        isLoading = true
+                    if vm.isLoading == false {
+                        vm.isLoading = true
                         Task {
                             if let response = await vm.submitForm() {
                                 homeVM.path.append(.Submitted)
                                 homeVM.nominationlist.append(response.data)
                             } else {
-                                showAlert = true
+                                vm.showAlert = true
                             }
-                            isLoading = false
+                            vm.isLoading = false
                         }
                     }
                 }
@@ -103,12 +95,12 @@ struct NominationFormView: View {
             }
             .customShadow()
         }
-        .sheet(isPresented: $vm.showAlert) {
-            LeavePageAlertView(showAlert: $vm.showAlert)
+        .sheet(isPresented: $vm.showSheet) {
+            LeavePageAlertView(showAlert: $vm.showSheet)
                 .background(.white)
                 .presentationDetents([.fraction(0.5)])
         }
-        .alert("Unable to submit", isPresented: $showAlert, actions: {
+        .alert("Unable to submit", isPresented: $vm.showAlert, actions: {
             
         }, message: {
             Text("Please Try again later")
