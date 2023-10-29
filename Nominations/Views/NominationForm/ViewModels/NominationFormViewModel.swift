@@ -14,9 +14,12 @@ class NominationFormViewModel: ObservableObject {
     @Published var showAlert = false
     @Published var isLoading = false
     
+    /// Reset all
     func reset() {
         showSheet = false
         nominationRequest = NominationRequest(nomineeId: "", reason: "", process: .Null)
+        showAlert = false
+        isLoading = false
     }
     
     /// Submit new nomination

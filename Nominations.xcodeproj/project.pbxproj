@@ -28,7 +28,7 @@
 		AA151FD82AEC0EF10085EDE7 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FD72AEC0EF10085EDE7 /* Network.swift */; };
 		AA151FDA2AEC0F400085EDE7 /* Nominee.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FD92AEC0F400085EDE7 /* Nominee.swift */; };
 		AA151FDC2AEC5B520085EDE7 /* AuthToken.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA151FDB2AEC5B520085EDE7 /* AuthToken.plist */; };
-		AA151FE42AEC5F480085EDE7 /* NominationsTestsNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FE32AEC5F480085EDE7 /* NominationsTestsNetwork.swift */; };
+		AA151FE42AEC5F480085EDE7 /* NominationsNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FE32AEC5F480085EDE7 /* NominationsNetworkTests.swift */; };
 		AA151FEB2AEC64DA0085EDE7 /* NominationsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FEA2AEC64DA0085EDE7 /* NominationsListItem.swift */; };
 		AA151FED2AEC86C50085EDE7 /* FeelingPickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FEC2AEC86C50085EDE7 /* FeelingPickerItem.swift */; };
 		AA151FF02AEC8D260085EDE7 /* FeelingPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FEF2AEC8D260085EDE7 /* FeelingPicker.swift */; };
@@ -37,6 +37,8 @@
 		AA151FFD2AED42D50085EDE7 /* NominationFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FFC2AED42D50085EDE7 /* NominationFormViewModel.swift */; };
 		AA151FFF2AED43CE0085EDE7 /* ViewEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA151FFE2AED43CE0085EDE7 /* ViewEnum.swift */; };
 		AA1520012AED97A20085EDE7 /* FormTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1520002AED97A20085EDE7 /* FormTextView.swift */; };
+		AA1520052AEEC3250085EDE7 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1520042AEEC3250085EDE7 /* HomeViewModelTests.swift */; };
+		AA1520072AEED0880085EDE7 /* NominationFormViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1520062AEED0880085EDE7 /* NominationFormViewModelTests.swift */; };
 		AA78B7912AEAA67100B5AC43 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7902AEAA67100B5AC43 /* HomeView.swift */; };
 		AA78B7942AEAA6CA00B5AC43 /* ListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7932AEAA6CA00B5AC43 /* ListEmptyView.swift */; };
 		AA78B7962AEAAFD400B5AC43 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7952AEAAFD400B5AC43 /* PrimaryButton.swift */; };
@@ -81,7 +83,7 @@
 		AA151FD92AEC0F400085EDE7 /* Nominee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nominee.swift; sourceTree = "<group>"; };
 		AA151FDB2AEC5B520085EDE7 /* AuthToken.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AuthToken.plist; sourceTree = "<group>"; };
 		AA151FE12AEC5F480085EDE7 /* NominationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NominationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA151FE32AEC5F480085EDE7 /* NominationsTestsNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationsTestsNetwork.swift; sourceTree = "<group>"; };
+		AA151FE32AEC5F480085EDE7 /* NominationsNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationsNetworkTests.swift; sourceTree = "<group>"; };
 		AA151FEA2AEC64DA0085EDE7 /* NominationsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationsListItem.swift; sourceTree = "<group>"; };
 		AA151FEC2AEC86C50085EDE7 /* FeelingPickerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingPickerItem.swift; sourceTree = "<group>"; };
 		AA151FEF2AEC8D260085EDE7 /* FeelingPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingPicker.swift; sourceTree = "<group>"; };
@@ -90,6 +92,8 @@
 		AA151FFC2AED42D50085EDE7 /* NominationFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationFormViewModel.swift; sourceTree = "<group>"; };
 		AA151FFE2AED43CE0085EDE7 /* ViewEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEnum.swift; sourceTree = "<group>"; };
 		AA1520002AED97A20085EDE7 /* FormTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextView.swift; sourceTree = "<group>"; };
+		AA1520042AEEC3250085EDE7 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		AA1520062AEED0880085EDE7 /* NominationFormViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationFormViewModelTests.swift; sourceTree = "<group>"; };
 		AA78B7902AEAA67100B5AC43 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AA78B7932AEAA6CA00B5AC43 /* ListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEmptyView.swift; sourceTree = "<group>"; };
 		AA78B7952AEAAFD400B5AC43 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
@@ -220,7 +224,9 @@
 		AA151FE22AEC5F480085EDE7 /* NominationsTests */ = {
 			isa = PBXGroup;
 			children = (
-				AA151FE32AEC5F480085EDE7 /* NominationsTestsNetwork.swift */,
+				AA151FE32AEC5F480085EDE7 /* NominationsNetworkTests.swift */,
+				AA1520042AEEC3250085EDE7 /* HomeViewModelTests.swift */,
+				AA1520062AEED0880085EDE7 /* NominationFormViewModelTests.swift */,
 			);
 			path = NominationsTests;
 			sourceTree = "<group>";
@@ -476,7 +482,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA151FE42AEC5F480085EDE7 /* NominationsTestsNetwork.swift in Sources */,
+				AA151FE42AEC5F480085EDE7 /* NominationsNetworkTests.swift in Sources */,
+				AA1520052AEEC3250085EDE7 /* HomeViewModelTests.swift in Sources */,
+				AA1520072AEED0880085EDE7 /* NominationFormViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

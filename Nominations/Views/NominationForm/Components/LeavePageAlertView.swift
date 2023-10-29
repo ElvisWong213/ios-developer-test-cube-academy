@@ -12,24 +12,18 @@ import CubeFoundationSwiftUI
 struct LeavePageAlertView: View {
     @EnvironmentObject var homeVM: HomeViewModel
 
-    @Binding var showAlert: Bool
+    @Binding var showSheet: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Are you sure?")
-                .textCase(.uppercase)
-                .font(TextStyle.boldHeadlineSmall.font)
-                .bold()
+            FormTextView(title: { Text("Are you sure?") }, description: "If you leave this page, you will loose any progress made.", fieldTitle: "")
                 .padding()
-            Text("If you leave this page, you will loose any progress made.")
-                .font(TextStyle.body.font)
-                .padding([.horizontal, .bottom])
             VStack(spacing: 0) {
                 SecondaryButtton(text: "Yes, leave page") {
                     homeVM.path = []
                 }
                 SecondaryButtton(text: "Cancel") {
-                    showAlert.toggle()
+                    showSheet.toggle()
                 }
             }
             .customShadow()
@@ -39,6 +33,6 @@ struct LeavePageAlertView: View {
 }
 
 #Preview {
-    LeavePageAlertView(showAlert: .constant(false))
+    LeavePageAlertView(showSheet: .constant(false))
         .environmentObject(HomeViewModel())
 }

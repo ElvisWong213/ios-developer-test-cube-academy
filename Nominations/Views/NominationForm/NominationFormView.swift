@@ -23,7 +23,7 @@ struct NominationFormView: View {
                 VStack(alignment: .leading) {
                     
                     // MARK: - Name
-                    FormTextView(titleText: { Text("I'd like to nominate...") }, bodyText: "Please select a cube who you fell has done someting honourable this month or just all round has a great work ethic.", secondTitleText: "Cube's name")
+                    FormTextView(title: { Text("I'd like to nominate...") }, description: "Please select a cube who you fell has done someting honourable this month or just all round has a great work ethic.", fieldTitle: "Cube's name")
                     Picker(selection: $vm.nominationRequest.nomineeId, label: Text("Club's name")) {
                         Text("-- Pick a name --")
                             .tag("")
@@ -38,7 +38,7 @@ struct NominationFormView: View {
                         .padding(.vertical)
                     
                     // MARK: - Reasoning
-                    FormTextView(titleText: { Text("I'd like to nominate this cube because...") }, bodyText: "Please let us know why you think this cube deserves the 'cub of the month' title 🏆⭐", secondTitleText: "Reasoning")
+                    FormTextView(title: { Text("I'd like to nominate this cube because...") }, description: "Please let us know why you think this cube deserves the 'cub of the month' title 🏆⭐", fieldTitle: "Reasoning")
                     TextEditor(text: $vm.nominationRequest.reason)
                         .frame(height: 200)
                         .border(Color.black, width: 1)
@@ -52,7 +52,7 @@ struct NominationFormView: View {
                         .padding(.vertical)
                     
                     // MARK: - Feeling
-                    FormTextView(titleText: {
+                    FormTextView(title: {
                         // Text in same line, having difference text style or color
                         HStack {
                             Text("is how we currently run") +
@@ -60,7 +60,7 @@ struct NominationFormView: View {
                                 .foregroundStyle(.accent) +
                             Text("fair?")
                         }
-                    }, bodyText: "As you know, out the nominees chosen, we spin a wheel to pick the cube of the month. What's your opinion on this method?", secondTitleText: "")
+                    }, description: "As you know, out the nominees chosen, we spin a wheel to pick the cube of the month. What's your opinion on this method?", fieldTitle: "")
                     FeelingPicker(selected: $vm.nominationRequest.process)
                 }
                 .padding()
@@ -96,7 +96,7 @@ struct NominationFormView: View {
             .customShadow()
         }
         .sheet(isPresented: $vm.showSheet) {
-            LeavePageAlertView(showAlert: $vm.showSheet)
+            LeavePageAlertView(showSheet: $vm.showSheet)
                 .background(.white)
                 .presentationDetents([.fraction(0.5)])
         }

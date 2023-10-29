@@ -130,6 +130,9 @@ extension RestEnum {
         case .getNominationById:
             return nil
         case .createNomination(nominationRequest: let nominationRequest):
+            guard nominationRequest.isAllFilledOut else {
+                return nil
+            }
             guard let data = try? JSONEncoder().encode(nominationRequest) else {
                 return nil
             }
