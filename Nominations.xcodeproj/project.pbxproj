@@ -161,7 +161,7 @@
 				1BA8D9DD2AE2962B008FBB3F /* Info.plist */,
 				1BA8D9B82AE290D7008FBB3F /* NominationsApp.swift */,
 				1BA8D9BA2AE290D7008FBB3F /* ContentView.swift */,
-				AA78B7AB2AEB01E300B5AC43 /* Model */,
+				AA78B7AB2AEB01E300B5AC43 /* Models */,
 				AA78B78F2AEAA66500B5AC43 /* Views */,
 				1B8FA0842AE2B69E009E185D /* Components */,
 				1BA8D9DE2AE29652008FBB3F /* Resources */,
@@ -323,14 +323,14 @@
 			path = Submitted;
 			sourceTree = "<group>";
 		};
-		AA78B7AB2AEB01E300B5AC43 /* Model */ = {
+		AA78B7AB2AEB01E300B5AC43 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				AA151FF12AEC933D0085EDE7 /* Network */,
 				AA151FF22AEC93510085EDE7 /* Feeling.swift */,
 				AA151FFE2AED43CE0085EDE7 /* ViewEnum.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

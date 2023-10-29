@@ -69,14 +69,17 @@ struct NominationFormView: View {
             // MARK: - Bottom
             HStack(spacing: 0) {
                 SecondaryButtton(text: "Back") {
+                    // If user filled out part of the fields
+                    // Show sheet
                     if vm.nominationRequest.isAPartFilledOut {
                         vm.showSheet.toggle()
                     } else {
+                        // Back to home view
                         homeVM.path = []
                     }
                 }
                 PrimaryButton(text: "Submit nomination", isLoading: vm.isLoading) {
-                    // Prevent user submit multiple times to the API, when they have bad internet connection
+                    // Prevent user submit multiple times, when they have bad internet connection
                     if vm.isLoading == false {
                         vm.isLoading = true
                         Task {
@@ -84,6 +87,7 @@ struct NominationFormView: View {
                                 homeVM.path.append(.Submitted)
                                 homeVM.nominationlist.append(response.data)
                             } else {
+                                // show alert when fail to submit
                                 vm.showAlert = true
                             }
                             vm.isLoading = false
