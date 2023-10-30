@@ -18,19 +18,15 @@ final class HomeViewModelTests: XCTestCase {
         executionTimeAllowance = 5
     }
 
-    func testGetAllNominations() {
+    func testFetchData() {
         Task {
-            viewModel.getAllNominations()
+            viewModel.isRefreshed = true
+            viewModel.fetchData()
             XCTAssertEqual(viewModel.nominationlist.count, 0)
+            XCTAssertEqual(viewModel.nomineeList.count, 70)
+            XCTAssertEqual(viewModel.isRefreshed, false)
         }
         
-    }
-    
-    func testGetAllNominees() {
-        Task {
-            viewModel.getAllNominees()
-            XCTAssertEqual(viewModel.nomineeList.count, 70)
-        }
     }
     
     func testRemoveNomination() async throws {

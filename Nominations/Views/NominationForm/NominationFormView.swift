@@ -68,7 +68,7 @@ struct NominationFormView: View {
             
             // MARK: - Bottom
             HStack(spacing: 0) {
-                SecondaryButtton(text: "Back") {
+                CustomButton(type: .Secondary, text: "Back") {
                     // If user filled out part of the fields
                     // Show sheet
                     if vm.nominationRequest.isAPartFilledOut {
@@ -78,7 +78,7 @@ struct NominationFormView: View {
                         homeVM.path = []
                     }
                 }
-                PrimaryButton(text: "Submit nomination", isLoading: vm.isLoading) {
+                CustomButton(type: .Primary, text: "Submit nomination", isLoading: vm.isLoading) {
                     // Prevent user submit multiple times, when they have bad internet connection
                     if vm.isLoading == false {
                         vm.isLoading = true

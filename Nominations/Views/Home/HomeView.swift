@@ -36,12 +36,11 @@ struct HomeView: View {
                     }
                     .listStyle(.plain)
                     .refreshable {
-                        vm.getAllNominees()
-                        vm.getAllNominations()
+                        vm.fetchData()
                     }
                 }
                 // MARK: - Bottom
-                PrimaryButton(text: "create new nomination") {
+                CustomButton(type: .Primary, text: "create new nomination") {
                     vm.path.append(.NominationForm)
                 }
                 .customShadow()
@@ -65,13 +64,11 @@ struct HomeView: View {
         
         // MARK: - Get and refresh data from API
         .onAppear() {
-            vm.getAllNominees()
-            vm.getAllNominations()
+            vm.fetchData()
         }
         .onChange(of: vm.isRefreshed) {
-            if vm.isRefreshed == true {
-                vm.getAllNominees()
-                vm.getAllNominations()
+            if vm.isRefreshed {
+                vm.fetchData()
             }
         }
     }

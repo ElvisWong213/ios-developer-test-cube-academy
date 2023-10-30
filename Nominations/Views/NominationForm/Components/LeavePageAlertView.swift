@@ -19,10 +19,10 @@ struct LeavePageAlertView: View {
             FormTextView(title: { Text("Are you sure?") }, description: "If you leave this page, you will loose any progress made.", fieldTitle: "")
                 .padding()
             VStack(spacing: 0) {
-                SecondaryButtton(text: "Yes, leave page") {
+                CustomButton(type: .Secondary, text: "Yes, leave page") {
                     homeVM.path = []
                 }
-                SecondaryButtton(text: "Cancel") {
+                CustomButton(type: .Secondary, text: "Cancel") {
                     showSheet.toggle()
                 }
             }

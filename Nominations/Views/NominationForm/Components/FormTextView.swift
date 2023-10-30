@@ -16,6 +16,7 @@ struct FormTextView<Content: View>: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
+            // Title have multiple color in single line so I decided to pass a view element into title
             title
                 .textCase(.uppercase)
                 .font(TextStyle.boldHeadlineSmall.font)

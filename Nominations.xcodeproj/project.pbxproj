@@ -41,8 +41,7 @@
 		AA1520072AEED0880085EDE7 /* NominationFormViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1520062AEED0880085EDE7 /* NominationFormViewModelTests.swift */; };
 		AA78B7912AEAA67100B5AC43 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7902AEAA67100B5AC43 /* HomeView.swift */; };
 		AA78B7942AEAA6CA00B5AC43 /* ListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7932AEAA6CA00B5AC43 /* ListEmptyView.swift */; };
-		AA78B7962AEAAFD400B5AC43 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7952AEAAFD400B5AC43 /* PrimaryButton.swift */; };
-		AA78B7992AEAB53700B5AC43 /* SecondaryButtton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7982AEAB53700B5AC43 /* SecondaryButtton.swift */; };
+		AA78B7962AEAAFD400B5AC43 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7952AEAAFD400B5AC43 /* CustomButton.swift */; };
 		AA78B79B2AEABE6D00B5AC43 /* NominationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B79A2AEABE6D00B5AC43 /* NominationFormView.swift */; };
 		AA78B7A32AEAE61100B5AC43 /* LeavePageAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7A22AEAE61100B5AC43 /* LeavePageAlertView.swift */; };
 		AA78B7A52AEAE90A00B5AC43 /* SubmittedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA78B7A42AEAE90A00B5AC43 /* SubmittedView.swift */; };
@@ -96,8 +95,7 @@
 		AA1520062AEED0880085EDE7 /* NominationFormViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationFormViewModelTests.swift; sourceTree = "<group>"; };
 		AA78B7902AEAA67100B5AC43 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AA78B7932AEAA6CA00B5AC43 /* ListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEmptyView.swift; sourceTree = "<group>"; };
-		AA78B7952AEAAFD400B5AC43 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
-		AA78B7982AEAB53700B5AC43 /* SecondaryButtton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtton.swift; sourceTree = "<group>"; };
+		AA78B7952AEAAFD400B5AC43 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		AA78B79A2AEABE6D00B5AC43 /* NominationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationFormView.swift; sourceTree = "<group>"; };
 		AA78B7A22AEAE61100B5AC43 /* LeavePageAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeavePageAlertView.swift; sourceTree = "<group>"; };
 		AA78B7A42AEAE90A00B5AC43 /* SubmittedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmittedView.swift; sourceTree = "<group>"; };
@@ -130,8 +128,7 @@
 			children = (
 				1B8FA0822AE2B69A009E185D /* HeaderBarView.swift */,
 				1B8FA0852AE2BB92009E185D /* NominationsHeaderView.swift */,
-				AA78B7982AEAB53700B5AC43 /* SecondaryButtton.swift */,
-				AA78B7952AEAAFD400B5AC43 /* PrimaryButton.swift */,
+				AA78B7952AEAAFD400B5AC43 /* CustomButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -454,8 +451,7 @@
 				1BA8D9BB2AE290D7008FBB3F /* ContentView.swift in Sources */,
 				AA78B7942AEAA6CA00B5AC43 /* ListEmptyView.swift in Sources */,
 				AA78B7AD2AEB01F600B5AC43 /* Nomination.swift in Sources */,
-				AA78B7992AEAB53700B5AC43 /* SecondaryButtton.swift in Sources */,
-				AA78B7962AEAAFD400B5AC43 /* PrimaryButton.swift in Sources */,
+				AA78B7962AEAAFD400B5AC43 /* CustomButton.swift in Sources */,
 				AA151FF72AEC97A10085EDE7 /* HomeViewModel.swift in Sources */,
 				AA78B7A32AEAE61100B5AC43 /* LeavePageAlertView.swift in Sources */,
 				1B8FA0862AE2BB92009E185D /* NominationsHeaderView.swift in Sources */,

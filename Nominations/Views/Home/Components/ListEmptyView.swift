@@ -15,6 +15,10 @@ struct ListEmptyView: View {
     @Binding var isRefreshed: Bool
     
     var body: some View {
+        // The reasone of using scroll view is scroll view is refreashable. And VStack don't.
+        // If user have a bad network connection, they cannot fetch the list of nominations.
+        // This view will show up and the user can refresh the view and fetch the list again.
+        // It can be done by using List, but it cannot match the figma design.
         ScrollView {
             ZStack {
                 Color(.cubeLightGrey)
@@ -38,7 +42,9 @@ struct ListEmptyView: View {
             .frame(height: height)
         }
         .refreshable {
-            isRefreshed = true
+            if isRefreshed == false {
+                isRefreshed = true
+            }
         }
     }
 }

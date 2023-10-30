@@ -16,23 +16,19 @@ class HomeViewModel: ObservableObject {
     @Published var isRefreshed = false
     
     /// Get Nominations from API
-    func getAllNominations() {
-        Task {
-            guard let response = try? await Network.makeRequest(request: .getAllNominations) as AllNominationsResponse else {
-                return
-            }
-            nominationlist = response.data
+    private func getAllNominations() async {
+        guard let response = try? await Network.makeRequest(request: .getAllNominations) as AllNominationsResponse else {
+            return
         }
+        nominationlist = response.data
     }
     
     /// Get Nominees from API
-    func getAllNominees() {
-        Task {
-            guard let response = try? await Network.makeRequest(request: .getAllNominees) as AllNominees else {
-                return
-            }
-            nomineeList = response.data
+    private func getAllNominees() async {
+        guard let response = try? await Network.makeRequest(request: .getAllNominees) as AllNominees else {
+            return
         }
+        nomineeList = response.data
     }
     
     /// Send delete nomination request
@@ -46,6 +42,15 @@ class HomeViewModel: ObservableObject {
                 print(response.data)
                 nominationlist.remove(atOffsets: atOffsets)
             }
+        }
+    }
+    
+    /// Fetch all data
+    func fetchData() {
+        Task {
+            await getAllNominees()
+            await getAllNominations()
+            isRefreshed = false
         }
     }
 }

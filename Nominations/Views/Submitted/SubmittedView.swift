@@ -34,10 +34,10 @@ struct SubmittedView: View {
             
             // MARK: - Bottom
             VStack(spacing: 0) {
-                PrimaryButton(text: "Create new nomination") {
+                CustomButton(type: .Primary, text: "Create new nomination") {
                     homeVM.path.removeLast()
                 }
-                SecondaryButtton(text: "Back to home") {
+                CustomButton(type: .Secondary, text: "Back to home") {
                     homeVM.path = []
                 }
             }

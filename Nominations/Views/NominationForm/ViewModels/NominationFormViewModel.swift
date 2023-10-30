@@ -27,6 +27,21 @@ class NominationFormViewModel: ObservableObject {
     func submitForm() async -> CreateNominationResponse? {
         guard nominationRequest.isAllFilledOut else { return nil }
         
-        return try? await Network.makeRequest(request: .createNomination(nominationRequest: nominationRequest)) as CreateNominationResponse
+        // Create a task
+        let task = Task {
+            let taskResult = try? await Network.makeRequest(request: .createNomination(nominationRequest: nominationRequest)) as CreateNominationResponse
+            try? Task.checkCancellation()
+            return taskResult
+        }
+        
+        // Timeout after 5 second
+        let timeoutTask = Task {
+            try await Task.sleep(nanoseconds: 5000000000)
+            task.cancel()
+        }
+        
+        let result = await task.value
+        timeoutTask.cancel()
+        return result
     }
 }
