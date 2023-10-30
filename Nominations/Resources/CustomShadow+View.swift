@@ -10,13 +10,14 @@ import Foundation
 import SwiftUI
 import CubeFoundationSwiftUI
 
+/// Custom shadow using pre-setup shadow with modification
 struct CustomShadow: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background() {
                 Color.white
                     .shadow(FigmaShadow.strong)
-                    .mask(Rectangle().padding(.top, -10))
+                    .mask(Rectangle().padding(.top, -10)) // Using mask to hide the bottom shadow
             }
     }
 }
