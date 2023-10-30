@@ -1,5 +1,17 @@
 # Cube Academy - iOS Task
 
+## Preview
+https://github.com/ElvisWong213/ios-developer-test-cube-academy/assets/40566101/4ca1e71e-14b4-4a95-b7fb-74034b85abab
+
+## Completed
+- Home screen, Nomination form, Submitted screen
+- API call
+- Unit test
+- Timeout error handling
+
+https://github.com/ElvisWong213/ios-developer-test-cube-academy/assets/40566101/2af9511e-7dac-45f7-8c35-957909483656
+
+
 ## Task
 
 For this task, you'll need to complete an iOS application using Swift and SwiftUI, following the provided designs and API documentation.
